@@ -1,36 +1,23 @@
-const clientes = [
-    {
-        id: 1,
-        nombre: "Juan Pérez",
-        activo: true
-    },
-    {
-        id: 2,
-        nombre: "Ana López",
-        activo: false
-    },
-    {
-        id: 3,
-        nombre: "Carlos García",
-        activo: true
-    }
-];
+const clientes = require("./clientes");
 
 function buscarCliente(id) {
-    return clientes.find(cliente => cliente.id === id);
+    const cliente = clientes.find(cliente => cliente.id === id);
+    if (!cliente) {
+        return `Cliente con id ${id} no encontrado.`;
+    }
+    return cliente;
 }
-
-const resultado = buscarCliente(2);
-console.log(resultado);
 
 function obtenerClientesActivos() {
     return clientes.filter(cliente => cliente.activo);
 }
 
-console.log(obtenerClientesActivos());
-
-function contarClientesActivos() {
-    return clientes.filter(cliente => cliente.activo).length;
+function obtenerNombresClientes(){
+    return clientes.map(cliente => cliente.nombre);
 }
 
-console.log(contarClientesActivos());
+module.exports = {
+    buscarCliente,
+    obtenerClientesActivos,
+    obtenerNombresClientes
+};
