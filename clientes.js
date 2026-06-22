@@ -21,3 +21,9 @@ const clientes = [
 
 console.log(clientes.find(cliente => cliente.id === 2));
 console.log(clientes.filter(cliente => cliente.activo));
+
+function buscarCliente(id) {
+    return clientes.find(cliente => cliente.id === id);
+}
+
+console.log(buscarCliente(1));
